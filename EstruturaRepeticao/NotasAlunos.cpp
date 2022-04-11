@@ -1,29 +1,35 @@
 #include <stdio.h>
 //metodo para verificar quais alunos estão aprovados numa escola com a média de 3 notas
 int main(){
-    float nota1, nota2, nota3, media;
-    int num, cont;
-    printf("informe o numero de alunos: ");
-    scanf("%d", &num);
-    nota1 = 0;
-    nota2 = 0;
-    nota3 = 0;
-    media = 0;
-    for(cont = 1; cont <= num; cont++){
-        printf("entre com a nota1 do aluno: ");
-        scanf("%f", &nota1);
-        printf("entre com a nota2 do aluno: ");
-        scanf("%f", &nota2);
-        printf("entre com a nota3 do aluno: ");
-        scanf("%f", &nota3);
-        
-        media = (nota1+nota2+nota3)/3;
 
-        if(media >= 7){
-            printf("Aluno %d foi APROVADO com media: %.2f\n", cont, media);
-        } else {
-            printf("Aluno %d foi REPROVADO com media: %.2f\n", cont, media);
+    int quantidade_de_alunos;
+
+    printf("informe o numero de alunos: ");
+    scanf("%d", &quantidade_de_alunos);
+
+    int quantidade_de_notas = 3;
+
+    for(int contador_aluno=1; contador_aluno <= quantidade_de_alunos; contador_aluno++) {
+
+        float notas[quantidade_de_notas];
+
+        for(int contador_nota = 1; contador_nota <= quantidade_de_notas; contador_nota++){
+            printf("entre com a nota%d do aluno%d: ", contador_nota, contador_aluno);
+            scanf("%f", &notas[contador_nota]);
         }
+
+        float acumulador = 0.0;
+        for(int contador_nota=1; contador_nota<= quantidade_de_notas; contador_nota++) {
+            acumulador += notas[contador_nota];
+        }
+
+        float media = acumulador / quantidade_de_notas;
+
+        if(media >= 7)
+            printf("Aluno %d foi APROVADO com media: %.2f\n", contador_aluno, media);
+        else
+            printf("Aluno %d foi REPROVADO com media: %.2f\n", contador_aluno, media);
     }
+
     return 0;
 }
