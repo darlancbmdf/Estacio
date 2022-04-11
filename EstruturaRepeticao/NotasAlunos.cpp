@@ -11,6 +11,8 @@ int main(){
 
     for(int contador_aluno=1; contador_aluno <= quantidade_de_alunos; contador_aluno++) {
 
+        float notas[quantidade_de_notas];
+
         for(int contador_nota = 1; contador_nota <= quantidade_de_notas; contador_nota++){
             printf("entre com a nota%d do aluno%d: ", contador_nota, contador_aluno);
             scanf("%f", &notas[contador_nota]);
