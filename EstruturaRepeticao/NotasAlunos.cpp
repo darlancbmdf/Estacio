@@ -2,34 +2,44 @@
 //metodo para verificar quais alunos estão aprovados numa escola com a média de 3 notas
 int main(){
 
-    int quantidade_de_alunos;
+    int quantidadeAlunos;
 
     printf("informe o numero de alunos: ");
-    scanf("%d", &quantidade_de_alunos);
+    scanf("%d", &quantidadeAlunos);
 
-    int quantidade_de_notas = 3;
-
-    for(int contador_aluno=1; contador_aluno <= quantidade_de_alunos; contador_aluno++) {
-
-        float notas[quantidade_de_notas];
-
-        for(int contador_nota = 1; contador_nota <= quantidade_de_notas; contador_nota++){
-            printf("entre com a nota%d do aluno%d: ", contador_nota, contador_aluno);
-            scanf("%f", &notas[contador_nota]);
-        }
-
-        float acumulador = 0.0;
-        for(int contador_nota=1; contador_nota<= quantidade_de_notas; contador_nota++) {
-            acumulador += notas[contador_nota];
-        }
-
-        float media = acumulador / quantidade_de_notas;
-
-        if(media >= 7)
-            printf("Aluno %d foi APROVADO com media: %.2f\n", contador_aluno, media);
-        else
-            printf("Aluno %d foi REPROVADO com media: %.2f\n", contador_aluno, media);
+    int quantidadeNotas = 3;
+    int tamanhoVetorNotas = quantidadeAlunos * quantidadeNotas;
+    float notas[tamanhoVetorNotas];
+    
+    for(int i = 0; i < tamanhoVetorNotas; i++) {
+        int contadorAluno = i / quantidadeAlunos + 1;
+        int contadorNota = i % quantidadeNotas + 1;
+        if(contadorNota == 1)
+            printf("\n");
+        printf("entre com a nota %d do aluno %d: ", contadorNota, contadorAluno);
+        scanf("%f", &notas[i]);
     }
+    
+    float media[quantidadeAlunos];
+    
+    for(int i = 0; i < tamanhoVetorNotas; i += quantidadeNotas) {
+        int contadorAluno = i / quantidadeAlunos;
+        int contadorNota = i % quantidadeNotas + 1;
+        media[contadorAluno] = (notas[i] + notas[i + 1] + notas[i + 2]) / quantidadeNotas;
+    }
+    
+    printf("\n=====================\n");
+    
+    for(int i = 0; i < quantidadeAlunos; i++) {
+        int contadorAluno = i + 1;
+        
+        if(media[i] >= 7)
+            printf("Aluno %d foi APROVADO com media: %.2f\n", contadorAluno, media[i]);
+        else
+            printf("Aluno %d foi REPROVADO com media: %.2f\n", contadorAluno, media[i]);
+    }
+    
+    printf("=====================");
 
     return 0;
 }
