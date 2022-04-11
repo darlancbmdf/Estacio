@@ -20,7 +20,7 @@ int main(){
 
         float acumulador = 0.0;
         for(int contador_nota=1; contador_nota<= quantidade_de_notas; contador_nota++) {
-            acumulador += notas[cont];
+            acumulador += notas[contador_nota];
         }
 
         float media = acumulador / quantidade_de_notas;
