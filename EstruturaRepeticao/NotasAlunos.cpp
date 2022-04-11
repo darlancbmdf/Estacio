@@ -24,5 +24,6 @@ int main(){
         } else {
             printf("Aluno %d foi REPROVADO com media: %.2f\n", cont, media);
         }
-    }    
+    }
+    return 0;
 }
