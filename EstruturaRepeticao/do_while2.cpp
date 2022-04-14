@@ -5,8 +5,7 @@
 int main(){
     float salbruto, salliquido, imposto, totbruto=0, totliquido=0, totimposto=0;
     int contfunc=1;
-    do
-    {
+    do {
         printf("Digite o salario bruto:");
         scanf("%f", &salbruto);
         if(salbruto > 999){
