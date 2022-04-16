@@ -30,14 +30,16 @@ int main(){
     printf("a media da prova 2 foi de = %.2f\n", somaProva2/qtdAlunos);
     printf("a media da prova 3 foi de = %.2f\n\n", somaProva3/qtdAlunos);
     //media dos alunos
-    float mediaAluno;
+    float mediaAluno = 0;
     for(int contAlunos = 0; contAlunos < qtdAlunos; contAlunos++){
         mediaAluno = (prova1[contAlunos]+ prova2[contAlunos]+ prova3[contAlunos])/3;
         printf("a media do aluno %d foi de = %.2f\n", contAlunos+1, mediaAluno);
     }
     printf("\n");
     //media da turma
-    float mediaTurma;
+    float mediaTurma = 0;
     mediaTurma = (somaProva1 + somaProva2 + somaProva3) / (qtdAlunos * 3);
-    printf("a media da turma foi de = %.2f\n", mediaTurma);
+    printf("a media da turma foi de = %.2f\n\n", mediaTurma);
+
+    return 0;
 }
