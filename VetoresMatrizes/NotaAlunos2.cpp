@@ -8,27 +8,24 @@ int main(){
     printf("informe o numero de alunos: ");
     scanf("%d", &qtdAlunos);
     float prova1[qtdAlunos], prova2[qtdAlunos], prova3[qtdAlunos];
-    float somaProva1, somaProva2, somaProva3;
-    somaProva1 = 0;
-    somaProva2 = 0;
-    somaProva3 = 0;
+    float somaProva[3];
     //informar o valor das notas dos alunos
     for(int i = 0; i < qtdAlunos; i++){
         printf("informe a nota da prova 1 do aluno %d: ", i+1);
         scanf("%f", &prova1[i]);
-        somaProva1 = somaProva1 + prova1[i];
+        somaProva[0] = somaProva[0] + prova1[i];
         printf("informe a nota da prova 2 do aluno %d: ", i+1);
         scanf("%f", &prova2[i]);
-        somaProva2 = somaProva2 + prova2[i];
+        somaProva[1] = somaProva[1] + prova2[i];
         printf("informe a nota da prova 3 do aluno %d: ", i+1);
         scanf("%f", &prova3[i]);
-        somaProva3 = somaProva3 + prova3[i];
+        somaProva[2] = somaProva[2] + prova3[i];
         printf("\n");
     }
     //Média das provas
-    printf("a media da prova 1 foi de = %.2f\n", somaProva1/qtdAlunos);
-    printf("a media da prova 2 foi de = %.2f\n", somaProva2/qtdAlunos);
-    printf("a media da prova 3 foi de = %.2f\n\n", somaProva3/qtdAlunos);
+    printf("a media da prova 1 foi de = %.2f\n", somaProva[0]/qtdAlunos);
+    printf("a media da prova 2 foi de = %.2f\n", somaProva[1]/qtdAlunos);
+    printf("a media da prova 3 foi de = %.2f\n\n", somaProva[2]/qtdAlunos);
     //media dos alunos
     float mediaAluno = 0;
     for(int contAlunos = 0; contAlunos < qtdAlunos; contAlunos++){
@@ -38,7 +35,7 @@ int main(){
     printf("\n");
     //media da turma
     float mediaTurma = 0;
-    mediaTurma = (somaProva1 + somaProva2 + somaProva3) / (qtdAlunos * 3);
+    mediaTurma = (somaProva[0] + somaProva[1] + somaProva[2]) / (qtdAlunos * 3);
     printf("a media da turma foi de = %.2f\n\n", mediaTurma);
 
     return 0;
