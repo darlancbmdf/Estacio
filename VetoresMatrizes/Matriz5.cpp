@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-/*Faça um programa que gere uma matriz 5x5, com 0 nas casas de lin e col iguai e nas demais 1*/
+/*Faça um programa que gere uma matriz 5x5, com 0 nas casas de linha e colunas iguais e nas demais 1*/
 
 int main(){
     int mat1[5][5], lin, col;
