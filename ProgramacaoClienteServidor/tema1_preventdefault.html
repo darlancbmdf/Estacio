@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Método preventDefault</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</head>
+<body>
+<p>
+<a id="lnk" href="outra-pagina.html">Link para outra página</a>
+</p>
+<form action="script.php">
+<input type="text" name="inpt" id="inpt" />
+<input type="submit" name="inpt_sbmt" id="inpt_sbmt" value="Enviar o Formulário" />
+</form>
+<script type="text/javascript">
+//Click do link
+$('#lnk').click(function (event) {
+event.preventDefault();
+console.log('Nada aconteceu ao clicar no link');
+});
+//Click do botão do formulário
+$('#inpt_sbmt').click(function (event) {
+event.preventDefault();
+console.log('Nada aconteceu ao clicar no botão do formulário');
+});
+</script>
+</body>
+</html>
