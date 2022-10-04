@@ -1,75 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Requisições AJAX com XML</title>
-<style type="text/css">
-table {border-collapse: collapse;}
-th, td {padding: 15px;text-align: left;}
-tr:nth-child(even) {background-color: #f2f2f2;}
-</style>
-</head>
-<body>
-<div id="resultado"></div>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Requisições AJAX com XML</title>
+    <style type="text/css">
+      table {
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="resultado"></div>
 
-<script type="text/javascript">
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-if (this.readyState == 4 && this.status == 200) { //Passando o resultado da requisição (o conteúdo em XML) para a função manipulaXML
-manipulaXML(this);
-}
-};
-xhttp.open("GET", "tema2_product.xml", true);
-xhttp.send();
+    <script type="text/javascript">
+      var xhttp = new XMLHttpRequest()
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          //Passando o resultado da requisição (o conteúdo em XML) para a função manipulaXML
+          manipulaXML(this)
+        }
+      }
+      xhttp.open('GET', 'tema2_product.xml', true)
+      xhttp.send()
 
-/*
+      /*
 Esta função recebe o xml resultado da requisição AJAX.
 Após ler o conteúdo, faz o parse e inclui o contéudo no elemento html de id #resultado
 */
-function manipulaXML(xml) {
-//o objeto responseXML trata o resultado de uma requisição AJAX no formato XML
-var xmlDoc = xml.responseXML;
+      function manipulaXML(xml) {
+        //o objeto responseXML trata o resultado de uma requisição AJAX no formato XML
+        var xmlDoc = xml.responseXML
 
-//Criando uma tabela para armazenar os dados e exibi-los na página
-var table = "<table>";
-table += '<tr>';
+        //Criando uma tabela para armazenar os dados e exibi-los na página
+        var table = '<table>'
+        table += '<tr>'
 
-//Armazena o primeiro no Product
-var primeiroNoProduct = xmlDoc.getElementsByTagName("Product")[0];
-//Armazena os nós filhos do primeiro nó Product
-var nosFilhosNoProduct = primeiroNoProduct.childNodes;
+        //Armazena o primeiro no Product
+        var primeiroNoProduct = xmlDoc.getElementsByTagName('Product')[0]
+        //Armazena os nós filhos do primeiro nó Product
+        var nosFilhosNoProduct = primeiroNoProduct.childNodes
 
-for (var j = 0; j < nosFilhosNoProduct.length; j++) {
-var noFilho = nosFilhosNoProduct[j];
-//Como os nós filhos também contém nós relacionados aos espaços em branco,
-//  é preciso tratar esses nós para coletar apenas as tags válidas, com nos nomes dos filhos
-if (noFilho.nodeType === 1){
-//Armazenando os nomes dos nós para serem usados como cabeçalho da tabela HTML
-table += '<th>'+noFilho.nodeName+'</th>';
-}
-}
-table += '</tr>';
+        for (var j = 0; j < nosFilhosNoProduct.length; j++) {
+          var noFilho = nosFilhosNoProduct[j]
+          //Como os nós filhos também contém nós relacionados aos espaços em branco,
+          //  é preciso tratar esses nós para coletar apenas as tags válidas, com nos nomes dos filhos
+          if (noFilho.nodeType === 1) {
+            //Armazenando os nomes dos nós para serem usados como cabeçalho da tabela HTML
+            table += '<th>' + noFilho.nodeName + '</th>'
+          }
+        }
+        table += '</tr>'
 
-//Percorre todo o arquivo XML, coleta os valores dos nós
-//  e os armazena como linhas e colunas da tabela HTML
-//Armazena os nós Product
-var nosProduct = xmlDoc.getElementsByTagName("Product");
+        //Percorre todo o arquivo XML, coleta os valores dos nós
+        //  e os armazena como linhas e colunas da tabela HTML
+        //Armazena os nós Product
+        var nosProduct = xmlDoc.getElementsByTagName('Product')
 
-for (var cont = 0; cont < nosProduct.length; cont++) {
-var filhosNoProduct = nosProduct[cont].childNodes;
-table += '<tr>';
-for (var contFilhos = 0; contFilhos < filhosNoProduct.length; contFilhos++) {
-if (filhosNoProduct[contFilhos].nodeType === 1){
-table += (filhosNoProduct[contFilhos].firstChild) ? '<td>'+filhosNoProduct[contFilhos].firstChild.nodeValue+'</td>' : '<td>null</td>';
-}
-}
-table += '</tr>';
-}
+        for (var cont = 0; cont < nosProduct.length; cont++) {
+          var filhosNoProduct = nosProduct[cont].childNodes
+          table += '<tr>'
+          for (
+            var contFilhos = 0;
+            contFilhos < filhosNoProduct.length;
+            contFilhos++
+          ) {
+            if (filhosNoProduct[contFilhos].nodeType === 1) {
+              table += filhosNoProduct[contFilhos].firstChild
+                ? '<td>' +
+                  filhosNoProduct[contFilhos].firstChild.nodeValue +
+                  '</td>'
+                : '<td>null</td>'
+            }
+          }
+          table += '</tr>'
+        }
 
-table += "</table>";
+        table += '</table>'
 
-document.getElementById("resultado").innerHTML = table;
-}
-</script>
-</body>
+        document.getElementById('resultado').innerHTML = table
+      }
+    </script>
+  </body>
 </html>

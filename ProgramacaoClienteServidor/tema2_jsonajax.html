@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Requisições AJAX com JSON</title>
+    <style type="text/css">
+      table {
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="resultado"></div>
+
+    <script type="text/javascript">
+      var xhttp = new XMLHttpRequest()
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          //Passando o resultado da requisição (o conteúdo em XML) para a função manipulaXML
+          manipulaJSON(this)
+        }
+      }
+      xhttp.open('GET', 'tema2_product.json', true)
+      xhttp.send()
+
+      /*
+Esta função recebe o json resultado da requisição AJAX.
+Após ler o conteúdo, faz o parse e inclui o contéudo no elemento html de id #resultado
+*/
+      function manipulaJSON(json) {
+        //o objeto responseText trata o resultado de uma requisição AJAX no formato de texto.
+        //  com a função JSON.parse convertemos o formato texto em um objeto Javascript
+        var jsonDoc = JSON.parse(json.responseText)
+
+        //Criando uma tabela para armazenar os dados e exibi-los na página
+        var table = '<table>'
+        table += '<tr>'
+        //Percorre as chaves do array (no índice 0), dentro do objeto, para montar os títulos da tabela
+        for (let key in jsonDoc.Products.Product[0]) {
+          table += '<th>' + key + '</th>'
+        }
+        table += '</tr>'
+
+        //Percorre o array, dentro do objeto, para montar, com seus valores, as linhas da tabela HTML
+        jsonDoc.Products.Product.forEach(function (item) {
+          table += '<tr>'
+          Object.keys(item).forEach(function (key) {
+            //console.log("key:" + key + "value:" + item[key]);
+            table += '<td>' + item[key] + '</td>'
+          })
+          table += '</tr>'
+        })
+        table += '</table>'
+
+        document.getElementById('resultado').innerHTML = table
+      }
+    </script>
+  </body>
+</html>

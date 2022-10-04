@@ -1,35 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<title>Eventos de teclado e mouse</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-</head>
-<body>
-<ul>
-<li>Item 1</li>
-<li>Item 2</li>
-<li>Item 3</li>
-<li>Item 4</li>
-<li>Item 5</li>
-</ul>
-<form>
-<input type="text" name="inpt" id="inpt" />
-</form>
-<script type="text/javascript">
-//Evento mouseover
-$('ul').on('mouseover', 'li', function () {
-console.log('Conteúdo do item da lista: ' + $(this).text());
-});
-//Evento mouseleave
-$('ul').on('mouseleave', 'li', function () {
-console.log('O mouse não está mais sobre o elemento da lista');
-});
-//Evento keypress
-$('#inpt').keypress(function (event) {
-event.preventDefault();
-console.log('A tecla pressionada foi: ' + event.which);
-});
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Eventos de teclado e mouse</title>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.5.1.js"
+    ></script>
+  </head>
+  <body>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+    </ul>
+    <form>
+      <input type="text" name="inpt" id="inpt" />
+    </form>
+    <script type="text/javascript">
+      //Evento mouseover
+      $('ul').on('mouseover', 'li', function () {
+        console.log('Conteúdo do item da lista: ' + $(this).text())
+      })
+      //Evento mouseleave
+      $('ul').on('mouseleave', 'li', function () {
+        console.log('O mouse não está mais sobre o elemento da lista')
+      })
+      //Evento keypress
+      $('#inpt').keypress(function (event) {
+        event.preventDefault()
+        console.log('A tecla pressionada foi: ' + event.which)
+      })
+    </script>
+  </body>
 </html>
