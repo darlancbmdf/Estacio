@@ -16,7 +16,20 @@
     
 		var resultadoOperacao = opere(numero1, numero2, op); 
 
-		alert('O resultado da operação é igual a: ' + resultadoOperacao); 
+    
+    
+    if(op == 1){
+      var operacao = "soma"; 
+    } else if(op == 2){
+      var operacao = "subtração";
+    } else if(op == 3){
+      var operacao = "multiplicação";
+    } else if(op == 4){
+      var operacao = "divisão";
+    }
+
+
+		alert('O resultado da '+ operacao +' entre '+ numero1 +' e '+ numero2 +' é igual a: ' + resultadoOperacao); 
 
 		function opere( numero1,  numero2, op){
 
