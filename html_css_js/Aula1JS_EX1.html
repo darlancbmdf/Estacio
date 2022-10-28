@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<title>Praticando Javascript - Exercício 1</title>
+</head>
+<body>
+       
+</body>
+     
+	<script type="text/javascript">
+    
+		var numero1 = prompt("Insira o primeiro número: ");
+		var numero2 = prompt("Insira o segundo número: ");
+    var op = prompt("Informe a operação: 1 sum, 2 sub, 3 mult ou 4 div");
+    
+		var resultadoOperacao = opere(numero1, numero2, op); 
+
+		alert('O resultado da operação é igual a: ' + resultadoOperacao); 
+
+		function opere( numero1,  numero2, op){
+
+			var resultado = 0; 
+
+      if(op == 1){
+        resultado = numero1 + numero2;
+      } else if(op == 2){
+        resultado = numero1 - numero2;
+      } else if(op == 3){
+        resultado = numero1 * numero2;
+      } else if(op == 4){
+        resultado = numero1 / numero2;
+      }
+			
+			return resultado;
+ 
+		}
+	</script>
+</html>
